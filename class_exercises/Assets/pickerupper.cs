@@ -5,6 +5,7 @@ using UnityEngine;
 public class pickerupper : MonoBehaviour
 {
     public int count = 0;
+    public GameObject  particlePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class pickerupper : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("pickup"))
         {
+            GameObject.Instantiate(particlePrefab, collision.collider.gameObject.transform.position, Quaternion.identity);
+
             GameObject.Destroy(collision.collider.gameObject);
 
             count = count+1;

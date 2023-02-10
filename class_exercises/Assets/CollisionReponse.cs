@@ -22,7 +22,10 @@ public class CollisionReponse : MonoBehaviour
     {
         if (collision.collider.gameObject == player)
         {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0,200.0f,0));
+            Vector3 force = this.transform.position - collision.collider.gameObject.transform.position;
+            force.Normalize();
+            force = force * 200f;
+            this.GetComponent<Rigidbody>().AddForce(force);
         }
     }
 }
